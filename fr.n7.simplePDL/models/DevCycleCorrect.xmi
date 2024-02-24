@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:simplepdl="http://simplepdl"
+    name="CycleDeDeveloppement">
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToSuccessors="//@processElements.6"
+      name="Concevoir"/>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToPredecessors="//@processElements.6 //@processElements.9"
+      linksToSuccessors="//@processElements.7 //@processElements.8"
+      name="Developper">
+    <need quantity="15"
+        name="DeveloppementSurLinux"
+        ressource="//@processElements.5"/>
+  </processElements>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToPredecessors="//@processElements.7"
+      linksToSuccessors="//@processElements.9"
+      name="Tester">
+    <need quantity="8"
+        name="TestSurLinux"
+        ressource="//@processElements.5"/>
+  </processElements>
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      linksToPredecessors="//@processElements.8"
+      name="Documenter">
+    <need quantity="5"
+        name="RedactionDocumentationSurWindows"
+        ressource="//@processElements.4"/>
+  </processElements>
+  <processElements
+      xsi:type="simplepdl:Ressource"
+      name="MachinesWindows"
+      quantity="5"
+      wdneed="//@processElements.3/@need.0"/>
+  <processElements
+      xsi:type="simplepdl:Ressource"
+      name="MachinesLinux"
+      quantity="15"
+      wdneed="//@processElements.1/@need.0 //@processElements.2/@need.0"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      linkType="startToFinish"
+      predecessor="//@processElements.0"
+      successor="//@processElements.1"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      predecessor="//@processElements.1"
+      successor="//@processElements.2"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      linkType="finishToStart"
+      predecessor="//@processElements.1"
+      successor="//@processElements.3"/>
+  <processElements
+      xsi:type="simplepdl:WorkSequence"
+      linkType="finishToFinish"
+      predecessor="//@processElements.2"
+      successor="//@processElements.1"/>
+</simplepdl:Process>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="petrinetwork" nsURI="http://petrinetwork" nsPrefix="petrinetwork">
+  <eClassifiers xsi:type="ecore:EClass" name="ReseauPetri">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//ElementPetri" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//ElementPetri">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempsMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempsMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lienAvecSuccesseur" upperBound="-1"
+        eType="#//Arc" eOpposite="#//Arc/predecesseurTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lienAvecPredecesseur" upperBound="-1"
+        eType="#//Arc" eOpposite="#//Arc/successeurTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//ElementPetri">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lienAvecPredecesseur" upperBound="-1"
+        eType="#//Arc" eOpposite="#//Arc/successeurPlace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lienAvecSuccesseur" upperBound="-1"
+        eType="#//Arc" eOpposite="#//Arc/predecesseurPlace"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nbJetons" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arc" abstract="true" eSuperTypes="#//ElementPetri">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successeurPlace" eType="#//Place"
+        eOpposite="#//Place/lienAvecPredecesseur"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecesseurPlace" eType="#//Place"
+        eOpposite="#//Place/lienAvecSuccesseur"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecesseurTransition"
+        eType="#//Transition" eOpposite="#//Transition/lienAvecSuccesseur"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successeurTransition" eType="#//Transition"
+        eOpposite="#//Transition/lienAvecPredecesseur"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="poids" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArcPondere" eSuperTypes="#//Arc"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArcLectureSeule" eSuperTypes="#//Arc"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ElementPetri" abstract="true"/>
+</ecore:EPackage>
