@@ -371,6 +371,16 @@ public class PetrinetworkPackageImpl extends EPackageImpl implements Petrinetwor
 	 * @generated
 	 */
 	@Override
+	public EReference getElementPetri_Reseaupetri() {
+		return (EReference)elementPetriEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public PetrinetworkFactory getPetrinetworkFactory() {
 		return (PetrinetworkFactory)getEFactoryInstance();
 	}
@@ -423,6 +433,7 @@ public class PetrinetworkPackageImpl extends EPackageImpl implements Petrinetwor
 		arcLectureSeuleEClass = createEClass(ARC_LECTURE_SEULE);
 
 		elementPetriEClass = createEClass(ELEMENT_PETRI);
+		createEReference(elementPetriEClass, ELEMENT_PETRI__RESEAUPETRI);
 	}
 
 	/**
@@ -461,8 +472,8 @@ public class PetrinetworkPackageImpl extends EPackageImpl implements Petrinetwor
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(reseauPetriEClass, ReseauPetri.class, "ReseauPetri", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReseauPetri_Elements(), this.getElementPetri(), null, "elements", null, 0, -1, ReseauPetri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReseauPetri_Nom(), ecorePackage.getEString(), "nom", null, 0, 1, ReseauPetri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReseauPetri_Elements(), this.getElementPetri(), this.getElementPetri_Reseaupetri(), "elements", null, 0, -1, ReseauPetri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReseauPetri_Nom(), ecorePackage.getEString(), "nom", null, 1, 1, ReseauPetri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransition_TempsMin(), ecorePackage.getEInt(), "tempsMin", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -489,6 +500,7 @@ public class PetrinetworkPackageImpl extends EPackageImpl implements Petrinetwor
 		initEClass(arcLectureSeuleEClass, ArcLectureSeule.class, "ArcLectureSeule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(elementPetriEClass, ElementPetri.class, "ElementPetri", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getElementPetri_Reseaupetri(), this.getReseauPetri(), this.getReseauPetri_Elements(), "reseaupetri", null, 0, 1, ElementPetri.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

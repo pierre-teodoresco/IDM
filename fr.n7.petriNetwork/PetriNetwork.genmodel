@@ -34,6 +34,8 @@
     </genClasses>
     <genClasses ecoreClass="PetriNetwork.ecore#//ArcPondere"/>
     <genClasses ecoreClass="PetriNetwork.ecore#//ArcLectureSeule"/>
-    <genClasses image="false" ecoreClass="PetriNetwork.ecore#//ElementPetri"/>
+    <genClasses image="false" ecoreClass="PetriNetwork.ecore#//ElementPetri">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference PetriNetwork.ecore#//ElementPetri/reseaupetri"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

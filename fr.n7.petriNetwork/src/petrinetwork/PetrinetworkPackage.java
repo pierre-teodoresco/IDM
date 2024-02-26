@@ -113,13 +113,22 @@ public interface PetrinetworkPackage extends EPackage {
 	int ELEMENT_PETRI = 6;
 
 	/**
+	 * The feature id for the '<em><b>Reseaupetri</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_PETRI__RESEAUPETRI = 0;
+
+	/**
 	 * The number of structural features of the '<em>Element Petri</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_PETRI_FEATURE_COUNT = 0;
+	int ELEMENT_PETRI_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Element Petri</em>' class.
@@ -139,6 +148,15 @@ public interface PetrinetworkPackage extends EPackage {
 	 * @generated
 	 */
 	int TRANSITION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Reseaupetri</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__RESEAUPETRI = ELEMENT_PETRI__RESEAUPETRI;
 
 	/**
 	 * The feature id for the '<em><b>Temps Min</b></em>' attribute.
@@ -214,6 +232,15 @@ public interface PetrinetworkPackage extends EPackage {
 	int PLACE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Reseaupetri</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE__RESEAUPETRI = ELEMENT_PETRI__RESEAUPETRI;
+
+	/**
 	 * The feature id for the '<em><b>Lien Avec Predecesseur</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,6 +303,15 @@ public interface PetrinetworkPackage extends EPackage {
 	 * @generated
 	 */
 	int ARC = 3;
+
+	/**
+	 * The feature id for the '<em><b>Reseaupetri</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__RESEAUPETRI = ELEMENT_PETRI__RESEAUPETRI;
 
 	/**
 	 * The feature id for the '<em><b>Successeur Place</b></em>' reference.
@@ -351,6 +387,15 @@ public interface PetrinetworkPackage extends EPackage {
 	int ARC_PONDERE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Reseaupetri</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_PONDERE__RESEAUPETRI = ARC__RESEAUPETRI;
+
+	/**
 	 * The feature id for the '<em><b>Successeur Place</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,6 +467,15 @@ public interface PetrinetworkPackage extends EPackage {
 	 * @generated
 	 */
 	int ARC_LECTURE_SEULE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Reseaupetri</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_LECTURE_SEULE__RESEAUPETRI = ARC__RESEAUPETRI;
 
 	/**
 	 * The feature id for the '<em><b>Successeur Place</b></em>' reference.
@@ -734,6 +788,17 @@ public interface PetrinetworkPackage extends EPackage {
 	EClass getElementPetri();
 
 	/**
+	 * Returns the meta object for the container reference '{@link petrinetwork.ElementPetri#getReseaupetri <em>Reseaupetri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Reseaupetri</em>'.
+	 * @see petrinetwork.ElementPetri#getReseaupetri()
+	 * @see #getElementPetri()
+	 * @generated
+	 */
+	EReference getElementPetri_Reseaupetri();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -953,6 +1018,14 @@ public interface PetrinetworkPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ELEMENT_PETRI = eINSTANCE.getElementPetri();
+
+		/**
+		 * The meta object literal for the '<em><b>Reseaupetri</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT_PETRI__RESEAUPETRI = eINSTANCE.getElementPetri_Reseaupetri();
 
 	}
 

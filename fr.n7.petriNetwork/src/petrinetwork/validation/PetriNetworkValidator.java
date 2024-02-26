@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import petrinetwork.util.PetrinetworkSwitch;
+import petrinetwork.PetrinetworkPackage;
 import petrinetwork.ReseauPetri;
 import petrinetwork.ElementPetri;
 import petrinetwork.Place;
@@ -75,7 +76,7 @@ public class PetriNetworkValidator extends PetrinetworkSwitch<Boolean> {
 		this.result.recordIfFailed(
 				object.getNom() != null && object.getNom().matches(IDENT_REGEX), 
 				object, 
-				"Le nom du process ne respecte pas les conventions Java");
+				"Le nom du réseau de petri ne respecte pas les conventions Java");
 		
 		// Visite
 		for (ElementPetri pe : object.getElements()) {
@@ -106,6 +107,20 @@ public class PetriNetworkValidator extends PetrinetworkSwitch<Boolean> {
 	public Boolean casePlace(Place object) {
 		// Contraintes sur Place
 		
+		// Contraintes de nommage
+		this.result.recordIfFailed(
+				object.getNom() != null && object.getNom().matches(IDENT_REGEX), 
+				object, 
+				"Le nom de la place ne respecte pas les conventions Java");
+		
+		// Unicité du nom
+		this.result.recordIfFailed(
+				object.getReseaupetri().getElements().stream()
+					.filter(elt -> elt.eClass().getClassifierID() == PetrinetworkPackage.PLACE)
+					.allMatch(p -> (p.equals(object) || !((Place) p).getNom().contains(object.getNom()))),
+				object, 
+				"Le nom de la place (" + object.getNom() + ") n'est pas unique");
+		
 		return null;
 	}
 	
@@ -118,6 +133,21 @@ public class PetriNetworkValidator extends PetrinetworkSwitch<Boolean> {
 	@Override
 	public Boolean caseTransition(Transition object) {
 		// Contraintes sur Transition
+		
+		// Contraintes de nommage
+		this.result.recordIfFailed(
+				object.getNom() != null && object.getNom().matches(IDENT_REGEX), 
+				object, 
+				"Le nom de la transition ne respecte pas les conventions Java");
+		
+		// Unicité du nom
+		this.result.recordIfFailed(
+				object.getReseaupetri().getElements().stream()
+					.filter(elt -> elt.eClass().getClassifierID() == PetrinetworkPackage.TRANSITION)
+					.allMatch(t -> (t.equals(object) || !((Transition) t).getNom().contains(object.getNom()))),
+				object, 
+				"Le nom de la transition (" + object.getNom() + ") n'est pas unique");
+		
 		return null;
 	}
 
@@ -130,6 +160,54 @@ public class PetriNetworkValidator extends PetrinetworkSwitch<Boolean> {
 	@Override
 	public Boolean caseArc(Arc object) {
 		//Contraintes sur Arc
+		
+		// Arc doit avoir au moins un prédecesseur et un successeur
+		this.result.recordIfFailed(
+				(object.getSuccesseurTransition() != null || object.getSuccesseurPlace() != null) &&
+					(object.getPredecesseurTransition() != null || object.getPredecesseurPlace() != null), 
+				object, 
+				"L'arc n'a pas de predecesseur ou de successeur");
+		
+		// Arc ne peut pas avoir deux successeur
+		this.result.recordIfFailed(
+				object.getSuccesseurTransition() == null || object.getSuccesseurPlace() == null,
+				object, 
+				"L'arc a deux successeurs");
+		
+		// Arc ne peut pas avoir deux prédecesseurs
+		this.result.recordIfFailed(
+				object.getPredecesseurPlace() == null || object.getPredecesseurTransition() == null,
+				object, 
+				"L'arc a deux prédecesseurs");
+		
+		// Arc doit avoir un successeurPlace ou un predecesseurPlace
+		this.result.recordIfFailed(
+				object.getPredecesseurPlace() != null || object.getSuccesseurPlace() != null, 
+				object, 
+				"L'arc n'a pas de place en prédecesseur ou en successeur");
+		
+		// Arc ne peut pas avoir comme prédécesseur une place et comme successeur une place aussi
+		this.result.recordIfFailed(
+				(object.getPredecesseurPlace() == null && object.getSuccesseurPlace() != null) ||
+					(object.getPredecesseurPlace() != null && object.getSuccesseurPlace() == null)||
+					(object.getPredecesseurPlace() == null && object.getSuccesseurPlace() == null),
+				object, 
+				"L'arc a pour prédecesseur et successeur une place");
+		
+		// Arc doit avoir un successeurTransition ou un predecesseurTransition
+		this.result.recordIfFailed(
+				object.getPredecesseurTransition() != null || object.getSuccesseurTransition() != null, 
+				object, 
+				"L'arc n'a pas de transition en prédecesseur ou en successeur");
+		
+		// Arc ne peut pas avoir comme prédécesseur une transition et comme successeur une transition aussi
+		this.result.recordIfFailed(
+				(object.getPredecesseurTransition() == null && object.getSuccesseurTransition() != null) ||
+					(object.getPredecesseurTransition() != null && object.getSuccesseurTransition() == null) ||
+					(object.getPredecesseurTransition() == null && object.getSuccesseurTransition() == null), 
+				object, 
+				"L'arc a pour prédecesseur et successeur une transition");
+		
 		return null;
 	}
 	

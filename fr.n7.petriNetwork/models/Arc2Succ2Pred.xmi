@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinetwork:ReseauPetri
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:petrinetwork="http://petrinetwork"
+    nom="Arc2Succ2Pred">
+  <elements
+      xsi:type="petrinetwork:Place"
+      lienAvecSuccesseur="//@elements.4"
+      nom="B"/>
+  <elements
+      xsi:type="petrinetwork:Place"
+      lienAvecPredecesseur="//@elements.4 //@elements.5"
+      nom="A"/>
+  <elements
+      xsi:type="petrinetwork:Transition"
+      lienAvecSuccesseur="//@elements.4"
+      lienAvecPredecesseur="//@elements.5"
+      nom="T1"/>
+  <elements
+      xsi:type="petrinetwork:Transition"
+      lienAvecSuccesseur="//@elements.5"
+      nom="T2"/>
+  <elements
+      xsi:type="petrinetwork:ArcPondere"
+      successeurPlace="//@elements.1"
+      predecesseurPlace="//@elements.0"
+      predecesseurTransition="//@elements.2"/>
+  <elements
+      xsi:type="petrinetwork:ArcLectureSeule"
+      successeurPlace="//@elements.1"
+      predecesseurTransition="//@elements.3"
+      successeurTransition="//@elements.2"/>
+</petrinetwork:ReseauPetri>

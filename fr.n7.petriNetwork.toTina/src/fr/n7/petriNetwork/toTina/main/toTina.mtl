@@ -1,0 +1,63 @@
+[comment encoding = UTF-8 /]
+[module toTina('http://petrinetwork')]
+
+
+[template public petriToTina(aReseauPetri : ReseauPetri)]
+[comment @main/]
+[file (aReseauPetri.nom + '.net', false, 'UTF-8')]
+net [aReseauPetri.nom/]
+[let places: OrderedSet(Place) = getPlaces(aReseauPetri)]
+	[for(p: Place | places)]
+		[placeToTina(p)/]
+	[/for]
+[/let]
+[let transitions: OrderedSet(Transition) = getTransitions(aReseauPetri)]
+	[for(t: Transition | transitions)]
+		[transitionToTina(t)/]
+	[/for]
+[/let]
+[/file]
+[/template]
+
+[query public getPlaces(p: ReseauPetri): OrderedSet(Place) = 
+  p.elements->select( e | e.oclIsTypeOf(Place) )
+      ->collect( e | e.oclAsType(Place) )
+      ->asOrderedSet() /]
+
+[query public getTransitions(p: ReseauPetri): OrderedSet(Transition) = 
+  p.elements->select( e | e.oclIsTypeOf(Transition) )
+      ->collect( e | e.oclAsType(Transition) )
+      ->asOrderedSet() /]
+
+[template public placeToTina(p: Place) post(trim())]
+pl [p.nom/] ([p.nbJetons/])
+[/template]
+
+[template public transitionToTina(t: Transition) post(trim())]
+[let pred: OrderedSet(Arc) = t.lienAvecPredecesseur]
+[let succ: OrderedSet(Arc) = t.lienAvecSuccesseur]
+	tr [t.nom/] ['[' + t.tempsMin + ',' + t.tempsMax + ']'/] 
+	[for(a: Arc | pred)]
+		[a.predecesseurPlace.nom/]
+		[if (a.oclIsKindOf(ArcPondere))]
+			*
+		[else]
+			?
+		[/if]
+		[a.poids + ' '/]
+	[/for] 
+	-> 
+	[for(a: Arc | succ)]
+		[a.successeurPlace.nom/]
+		[if (a.oclIsKindOf(ArcPondere))]
+			*
+		[else]
+			?
+		[/if]
+		[a.poids + ' '/]
+	[/for]
+	['\n'/]
+[/let]
+[/let]
+[/template]
+

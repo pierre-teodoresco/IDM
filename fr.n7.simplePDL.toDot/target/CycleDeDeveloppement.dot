@@ -1,0 +1,6 @@
+digraph CycleDeDeveloppement {
+	    	Concevoir -> Developper [arrowhead=vee label=s2f]
+	    	Developper -> Tester [arrowhead=vee label=s2s]
+	    	Developper -> Documenter [arrowhead=vee label=f2s]
+	    	Tester -> Developper [arrowhead=vee label=f2f]
+}

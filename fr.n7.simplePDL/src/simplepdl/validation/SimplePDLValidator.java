@@ -132,7 +132,7 @@ public class SimplePDLValidator extends SimplepdlSwitch<Boolean> {
 				object, 
 				"L'activité " + object.getName() + " demande plus d'une fois la même ressource");
 		
-		// WD successeur ou predecesseur d'aucun WS
+		// WD n'est successeur ou predecesseur d'aucun WS
 		this.result.recordIfFailed(
 				object.getLinksToPredecessors().size() > 0 ||
 					object.getLinksToSuccessors().size() > 0,
