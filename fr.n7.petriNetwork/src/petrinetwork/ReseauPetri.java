@@ -27,11 +27,13 @@ public interface ReseauPetri extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
 	 * The list contents are of type {@link petrinetwork.ElementPetri}.
+	 * It is bidirectional and its opposite is '{@link petrinetwork.ElementPetri#getReseaupetri <em>Reseaupetri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see petrinetwork.PetrinetworkPackage#getReseauPetri_Elements()
-	 * @model containment="true"
+	 * @see petrinetwork.ElementPetri#getReseaupetri
+	 * @model opposite="reseaupetri" containment="true"
 	 * @generated
 	 */
 	EList<ElementPetri> getElements();
@@ -43,7 +45,7 @@ public interface ReseauPetri extends EObject {
 	 * @return the value of the '<em>Nom</em>' attribute.
 	 * @see #setNom(String)
 	 * @see petrinetwork.PetrinetworkPackage#getReseauPetri_Nom()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getNom();

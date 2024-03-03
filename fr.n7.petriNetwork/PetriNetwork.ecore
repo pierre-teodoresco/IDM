@@ -3,7 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="petrinetwork" nsURI="http://petrinetwork" nsPrefix="petrinetwork">
   <eClassifiers xsi:type="ecore:EClass" name="ReseauPetri">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//ElementPetri" containment="true"/>
+        eType="#//ElementPetri" containment="true" eOpposite="#//ElementPetri/reseaupetri"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//ElementPetri">
@@ -37,5 +37,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ArcPondere" eSuperTypes="#//Arc"/>
   <eClassifiers xsi:type="ecore:EClass" name="ArcLectureSeule" eSuperTypes="#//Arc"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ElementPetri" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ElementPetri" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reseaupetri" eType="#//ReseauPetri"
+        eOpposite="#//ReseauPetri/elements"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -64,4 +64,8 @@
       linkType="finishToFinish"
       predecessor="//@processElements.2"
       successor="//@processElements.1"/>
+  <processElements
+      xsi:type="simplepdl:Guidance"
+      text="Développer c'est délicieux"
+      element="//@processElements.1"/>
 </simplepdl:Process>

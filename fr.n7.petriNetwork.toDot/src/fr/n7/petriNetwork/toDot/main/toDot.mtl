@@ -1,0 +1,31 @@
+[comment encoding = UTF-8 /]
+[module toDot('http://petrinetwork')]
+
+
+[template public ReseauPetriToDot(aReseauPetri : ReseauPetri)]
+[comment @main/]
+[file (aReseauPetri.nom + '.dot', false, 'UTF-8')]
+digraph [aReseauPetri.nom/] {
+[let arcs : OrderedSet(Arc) = aReseauPetri.getArcs()]
+	[if (arcs->size() > 0)]
+		[for (arc : Arc | arcs)]
+	    	[arc.toDot()/]
+	    [/for]
+	[/if]
+[/let]
+}
+[/file]
+[/template]
+
+[query public getArcs(r: ReseauPetri) : OrderedSet(Arc) = 
+  r.elements->select( e | e.oclIsKindOf(Arc) )
+      ->collect( e | e.oclAsType(Arc) )
+      ->asOrderedSet() /]
+
+[template public toDot(arc : Arc) post (trim()) ]
+[if (arc.predecesseurPlace = null)]
+	[arc.predecesseurTransition.nom/] -> [arc.successeurPlace.nom/] ['[arrowhead=vee label=' + arc.poids + ']'/]
+[else]
+	[arc.predecesseurPlace.nom/] -> [arc.successeurTransition.nom/] ['[arrowhead=vee label=' + arc.poids + ']'/]
+[/if]
+[/template]
