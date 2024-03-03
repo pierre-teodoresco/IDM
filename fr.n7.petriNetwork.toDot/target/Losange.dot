@@ -1,0 +1,6 @@
+digraph Losange {
+	    	A -> T1 [arrowhead=vee label=1]
+	    	T1 -> B [arrowhead=vee label=1]
+	    	B -> T2 [arrowhead=vee label=1]
+	    	T2 -> A [arrowhead=vee label=1]
+}

@@ -5,5 +5,5 @@
 * Pierre Teodoresco
 
 ## A propos
-Ceci est un projet effectuer dans du cours d'**IDM** à l'**ENSEEIHT** (2A SN FISA)
-Ce depôt continent l'ensemble des sources relatant du mini projet d'IDM
+Ceci est un projet comptant pour le cours d'**IDM** à l'**ENSEEIHT** (2A SN FISA)
+Ce depôt continent l'ensemble des sources du mini projet d'IDM
