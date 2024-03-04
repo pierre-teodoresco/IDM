@@ -434,13 +434,22 @@ public interface SimplepdlPackage extends EPackage {
 	int WD_NEED__RESSOURCE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Wd</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WD_NEED__WD = 3;
+
+	/**
 	 * The number of structural features of the '<em>WD Need</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WD_NEED_FEATURE_COUNT = 3;
+	int WD_NEED_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>WD Need</em>' class.
@@ -720,6 +729,17 @@ public interface SimplepdlPackage extends EPackage {
 	EReference getWDNeed_Ressource();
 
 	/**
+	 * Returns the meta object for the container reference '{@link simplepdl.WDNeed#getWd <em>Wd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Wd</em>'.
+	 * @see simplepdl.WDNeed#getWd()
+	 * @see #getWDNeed()
+	 * @generated
+	 */
+	EReference getWDNeed_Wd();
+
+	/**
 	 * Returns the meta object for the attribute '{@link simplepdl.WDNeed#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -968,6 +988,14 @@ public interface SimplepdlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference WD_NEED__RESSOURCE = eINSTANCE.getWDNeed_Ressource();
+
+		/**
+		 * The meta object literal for the '<em><b>Wd</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WD_NEED__WD = eINSTANCE.getWDNeed_Wd();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

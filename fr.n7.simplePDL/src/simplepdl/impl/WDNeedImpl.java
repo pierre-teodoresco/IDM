@@ -11,9 +11,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import simplepdl.Ressource;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WDNeed;
+import simplepdl.WorkDefinition;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +28,7 @@ import simplepdl.WDNeed;
  *   <li>{@link simplepdl.impl.WDNeedImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link simplepdl.impl.WDNeedImpl#getName <em>Name</em>}</li>
  *   <li>{@link simplepdl.impl.WDNeedImpl#getRessource <em>Ressource</em>}</li>
+ *   <li>{@link simplepdl.impl.WDNeedImpl#getWd <em>Wd</em>}</li>
  * </ul>
  *
  * @generated
@@ -191,12 +194,59 @@ public class WDNeedImpl extends MinimalEObjectImpl.Container implements WDNeed {
 	 * @generated
 	 */
 	@Override
+	public WorkDefinition getWd() {
+		if (eContainerFeatureID() != SimplepdlPackage.WD_NEED__WD) return null;
+		return (WorkDefinition)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWd(WorkDefinition newWd, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newWd, SimplepdlPackage.WD_NEED__WD, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setWd(WorkDefinition newWd) {
+		if (newWd != eInternalContainer() || (eContainerFeatureID() != SimplepdlPackage.WD_NEED__WD && newWd != null)) {
+			if (EcoreUtil.isAncestor(this, newWd))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newWd != null)
+				msgs = ((InternalEObject)newWd).eInverseAdd(this, SimplepdlPackage.WORK_DEFINITION__NEED, WorkDefinition.class, msgs);
+			msgs = basicSetWd(newWd, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimplepdlPackage.WD_NEED__WD, newWd, newWd));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SimplepdlPackage.WD_NEED__RESSOURCE:
 				if (ressource != null)
 					msgs = ((InternalEObject)ressource).eInverseRemove(this, SimplepdlPackage.RESSOURCE__WDNEED, Ressource.class, msgs);
 				return basicSetRessource((Ressource)otherEnd, msgs);
+			case SimplepdlPackage.WD_NEED__WD:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetWd((WorkDefinition)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -211,8 +261,24 @@ public class WDNeedImpl extends MinimalEObjectImpl.Container implements WDNeed {
 		switch (featureID) {
 			case SimplepdlPackage.WD_NEED__RESSOURCE:
 				return basicSetRessource(null, msgs);
+			case SimplepdlPackage.WD_NEED__WD:
+				return basicSetWd(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case SimplepdlPackage.WD_NEED__WD:
+				return eInternalContainer().eInverseRemove(this, SimplepdlPackage.WORK_DEFINITION__NEED, WorkDefinition.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -253,6 +319,8 @@ public class WDNeedImpl extends MinimalEObjectImpl.Container implements WDNeed {
 			case SimplepdlPackage.WD_NEED__RESSOURCE:
 				if (resolve) return getRessource();
 				return basicGetRessource();
+			case SimplepdlPackage.WD_NEED__WD:
+				return getWd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -273,6 +341,9 @@ public class WDNeedImpl extends MinimalEObjectImpl.Container implements WDNeed {
 				return;
 			case SimplepdlPackage.WD_NEED__RESSOURCE:
 				setRessource((Ressource)newValue);
+				return;
+			case SimplepdlPackage.WD_NEED__WD:
+				setWd((WorkDefinition)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -295,6 +366,9 @@ public class WDNeedImpl extends MinimalEObjectImpl.Container implements WDNeed {
 			case SimplepdlPackage.WD_NEED__RESSOURCE:
 				setRessource((Ressource)null);
 				return;
+			case SimplepdlPackage.WD_NEED__WD:
+				setWd((WorkDefinition)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -313,6 +387,8 @@ public class WDNeedImpl extends MinimalEObjectImpl.Container implements WDNeed {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case SimplepdlPackage.WD_NEED__RESSOURCE:
 				return ressource != null;
+			case SimplepdlPackage.WD_NEED__WD:
+				return getWd() != null;
 		}
 		return super.eIsSet(featureID);
 	}

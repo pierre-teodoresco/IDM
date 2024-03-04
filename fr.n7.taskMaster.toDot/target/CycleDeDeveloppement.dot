@@ -1,0 +1,27 @@
+digraph {
+
+  "Concevoir_start" [shape=ellipse];
+
+  "Concevoir_finish" [shape=ellipse];
+  "Concevoir_start" -> "Concevoir_finish" [arrowhead=vee];
+
+  "Developper_start" [shape=ellipse];
+
+  "Developper_finish" [shape=ellipse];
+  "Developper_start" -> "Developper_finish" [arrowhead=vee];
+  "" -> "Developper_finish" [arrowhead=vee];
+  "" -> "Developper_finish" [arrowhead=vee];
+
+  "Tester_start" [shape=ellipse];
+
+  "Tester_finish" [shape=ellipse];
+  "Tester_start" -> "Tester_finish" [arrowhead=vee];
+  "" -> "Tester_finish" [arrowhead=vee];
+
+  "Documenter_start" [shape=ellipse];
+
+  "Documenter_finish" [shape=ellipse];
+  "Documenter_start" -> "Documenter_finish" [arrowhead=vee];
+  "" -> "Documenter_finish" [arrowhead=vee];
+
+}
